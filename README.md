@@ -1,20 +1,9 @@
-# firebase-auth
+# Firebase Auth
 
-## Build Setup
+I am working through the fabulous tutorial by The Net Ninja on [Firebasee Authentication](https://www.youtube.com/playlist?list=PL4cUxeGkcC9jUPIes_B8vRjn1_GaplOPQ). However, I am using Nuxt.Js, the Nuxt/Firebase module, and Vuetify for visual styling. I previously worked through
+another playlist by The Net Ninja on using Vuetify to quickly build beautiful and reactive user interfaces which I would highly recommend.
 
-```bash
-# install dependencies
-$ npm install
+## Things Learned
 
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+So far I've been impressed with Firebase authentication as well as Firestore document storage. I'm primarily a SQL DB back-end kind of guy but I
+can quickly see how useful something like this could be.
