@@ -17,18 +17,21 @@
             ></v-text-field>
             <v-text-field
               v-model="password"
+              v-on:keyup.enter="logIn"
               type="password"
               clearable
               label="Password"
               autocomplete="current-password"
               :error="error"
             ></v-text-field>
-            <p class="error">{{error_message}}</p>
+            <p class="error">{{ error_message }}</p>
           </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue accent=-4" text class="mb-4" @click="logIn">Log In</v-btn>
+          <v-btn color="blue accent=-4" text class="mb-4" @click="logIn"
+            >Log In</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-col>
@@ -47,13 +50,12 @@ export default {
   },
   methods: {
     async logIn() {
-      console.log();
       try {
         await this.$fireAuth.signInWithEmailAndPassword(
           this.email,
           this.password
         );
-        this.$router.push("/");
+        this.$emit("modalClose");
       } catch (error) {
         (this.error = true), (this.error_message = error.message);
       }

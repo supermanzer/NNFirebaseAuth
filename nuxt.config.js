@@ -70,7 +70,7 @@ export default {
         persistence: 'local',
         initialize: {
           onAuthStateChangedMutation: 'auth/ON_AUTH_STATE_CHANGED_MUTATION',
-          // onAuthStateChangedAction: 'auth/onAuthStateChangedAction',
+          onAuthStateChangedAction: 'auth/onAuthStateChangedAction',
         }
       },
       firestore: true,

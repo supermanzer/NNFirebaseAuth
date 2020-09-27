@@ -4,14 +4,16 @@
       <v-card flat>
         <v-card-title primary-title>Create New Guide</v-card-title>
         <v-card-text>
-          <v-form>
+          <v-form @submit.prevent="saveGuide" ref="form">
             <v-text-field name label="Guide Name" v-model="name"></v-text-field>
             <v-textarea v-model="text" label="Guide Text"></v-textarea>
           </v-form>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="info" text @click="saveGuide">Save Guide</v-btn>
+          <v-btn color="info" text type="submit" @click="saveGuide"
+            >Save Guide</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-col>
@@ -28,13 +30,16 @@ export default {
     };
   },
   methods: {
-    saveGuide() {
+    async saveGuide() {
       const new_guide = {
         name: this.name,
         text: this.text,
         created: Date.now(),
+        author: this.$store.state.auth.user.email,
       };
+      await this.$fireStore.collection("guides").add(new_guide);
       console.log(new_guide);
+      this.$router.push("/");
     },
   },
 };
