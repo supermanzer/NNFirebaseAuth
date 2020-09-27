@@ -51,7 +51,6 @@ export default {
           this.email,
           this.password
         );
-        this.$store.dispatch("guides/addFireStoreListener");
         this.$router.push("/");
         this.$emit("modalClose");
       } catch (error) {

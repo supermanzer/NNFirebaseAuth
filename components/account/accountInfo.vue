@@ -8,7 +8,7 @@
           <v-list-item-title
             ><strong>{{ user.email }}</strong></v-list-item-title
           >
-          <v-list-item-subtitle>{{ bio }}</v-list-item-subtitle>
+          <v-list-item-subtitle>{{ user.bio }}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
       <v-list v-if="guides.length > 0">
@@ -26,44 +26,15 @@
 <script>
 export default {
   name: "Account-Info",
-  data() {
-    return {
-      guides: [],
-      bio: "",
-    };
-  },
   computed: {
     user() {
       return this.$store.state.auth.user;
     },
-  },
-  methods: {
-    getGuides() {
-      this.guides = [];
-      this.$fireStore
-        .collection("guides")
-        .where("author", "==", this.user.email)
-        .get()
-        .then((qS) => {
-          qS.forEach((doc) => {
-            this.guides.push(doc.data());
-          });
-        });
+    guides() {
+      return this.$store.state.guides.guides.filter(
+        (g) => g.author == this.user.email
+      );
     },
-    getBio() {
-      const uid = this.$store.state.auth.user.uid;
-      this.$fireStore
-        .collection("users")
-        .doc(uid)
-        .get()
-        .then((doc) => {
-          this.bio = doc.data().bio;
-        });
-    },
-  },
-  mounted() {
-    this.getGuides();
-    this.getBio();
   },
 };
 </script>

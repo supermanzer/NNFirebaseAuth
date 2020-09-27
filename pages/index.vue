@@ -12,5 +12,8 @@ export default {
   components: {
     guideList,
   },
+  created() {
+    this.$store.dispatch("guides/addFireStoreListener");
+  },
 };
 </script>
