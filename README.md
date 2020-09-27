@@ -5,5 +5,6 @@ another playlist by The Net Ninja on using Vuetify to quickly build beautiful an
 
 ## Things Learned
 
-So far I've been impressed with Firebase authentication as well as Firestore document storage. I'm primarily a SQL DB back-end kind of guy but I
-can quickly see how useful something like this could be.
+- So far I've been impressed with Firebase authentication as well as Firestore document storage. I'm primarily a SQL DB back-end kind of guy but I can quickly see how useful something like this could be.
+
+- It pays to be careful with how often you load data. It seems like, with some careful planning, you could serve the data for a fairly busy site while remaining in the "free" tier of FireStore read/write quotas.
